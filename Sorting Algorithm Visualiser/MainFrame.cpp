@@ -1,5 +1,6 @@
 #include "MainFrame.h"
 #include <wx/wx.h>
+#include "Settings.h"
 #include <SDL.h>
 
 MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY, title) {
@@ -12,17 +13,21 @@ void MainFrame::createGUI() {
 
 	panel = new wxPanel(this);
 
-	wxArrayString sarr;
-	sarr.Add("Bubble Sort");
+	sarr.Add("Bubble Sort"); sarr.Add("Selection Sort"); sarr.Add("Insertion Sort");
+	sarr.Add("Merge Sort"); sarr.Add("Quick Sort"); sarr.Add("Heap Sort");
+	sarr.Add("Radix Sort");
 
-	algorithmText = new wxStaticText(panel, wxID_ANY, "Sorting Algorithm", wxPoint(90, 30), wxSize(-1, -1));
-	algoChoice = new wxChoice(panel, wxID_ANY, wxPoint(50, 50), wxSize(200, 100), sarr);
+	algorithmText = new wxStaticText(panel, wxID_ANY, "Sorting Algorithm", wxPoint(90, 10), wxSize(-1, -1));
+	algoChoice = new wxChoice(panel, wxID_ANY, wxPoint(50, 30), wxSize(200, 100), sarr);
 	algoChoice->SetSelection(0);
 
-	speedText = new wxStaticText(panel, wxID_ANY, "Animation Speed (%)", wxPoint(80, 140), wxSize(-1, -1));
-	speedSlider = new wxSlider(panel, wxID_ANY, 100, 10, 100, wxPoint(50, 100), wxSize(200, 100), wxSL_VALUE_LABEL);
+	speedText = new wxStaticText(panel, wxID_ANY, "Animation Speed (%)", wxPoint(80, 110), wxSize(-1, -1));
+	speedSlider = new wxSlider(panel, wxID_ANY, 100, 10, 100, wxPoint(50, 70), wxSize(200, 100), wxSL_VALUE_LABEL);
 
-	soundOption = new wxCheckBox(panel, wxID_ANY, "Audio", wxPoint(120, 190), wxSize(-1, -1));
+	sizeText = new wxStaticText(panel, wxID_ANY, "Array Size", wxPoint(120, 180), wxSize(-1, -1));
+	sizeSlider = new wxSlider(panel, wxID_ANY, 200, 50, 200, wxPoint(50, 140), wxSize(200, 100), wxSL_VALUE_LABEL);
+
+	soundOption = new wxCheckBox(panel, wxID_ANY, "Audio", wxPoint(120, 210), wxSize(-1, -1));
 
 	startButton = new wxButton(panel, wxID_ANY, "Start", wxPoint(350, 50), wxSize(100, -1));
 	pauseButton = new wxButton(panel, wxID_ANY, "Pause", wxPoint(350, 80), wxSize(100, -1));
@@ -41,6 +46,7 @@ void MainFrame::bindEventHandlers() {
 
 	algoChoice->Bind(wxEVT_CHOICE, &MainFrame::chooseAlgo, this);
 	speedSlider->Bind(wxEVT_SLIDER, &MainFrame::changeSpeed, this);
+	sizeSlider->Bind(wxEVT_SLIDER, &MainFrame::changeSize, this);
 	soundOption->Bind(wxEVT_CHECKBOX, &MainFrame::toggleAudio, this);
 }
 
@@ -59,26 +65,38 @@ void MainFrame::pauseClicked(wxCommandEvent& evt) {
 
 void MainFrame::stopClicked(wxCommandEvent& evt) {
 
-	running = false;
 	initState();
 }
 
 void MainFrame::chooseAlgo(wxCommandEvent& evt) {
 
+	int choiceIndex = algoChoice->GetSelection();
+	// Convert to std::string
+	settings.setAlgo(std::string(sarr[choiceIndex].mb_str()));
 }
 
 void MainFrame::changeSpeed(wxCommandEvent& evt) {
 
+	settings.setSpeed(speedSlider->GetValue());
+}
+
+void MainFrame::changeSize(wxCommandEvent& evt) {
+
+	settings.setSize(sizeSlider->GetValue());
 }
 
 void MainFrame::toggleAudio(wxCommandEvent& evt) {
 
+	settings.toggleAudio(soundOption->GetValue());
 }
 
 void MainFrame::initState() {
 
+	running = false;
+
 	algoChoice->Enable();
 	speedSlider->Enable();
+	sizeSlider->Enable();
 	soundOption->Enable();
 	startButton->Enable();
 	pauseButton->Disable();
@@ -93,6 +111,7 @@ void MainFrame::startState() {
 
 	algoChoice->Disable();
 	speedSlider->Disable();
+	sizeSlider->Disable();
 	soundOption->Disable();
 	startButton->Disable();
 	pauseButton->Enable();

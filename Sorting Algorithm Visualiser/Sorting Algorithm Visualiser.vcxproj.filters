@@ -18,9 +18,6 @@
     <ClCompile Include="testAlgos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sort.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="App.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

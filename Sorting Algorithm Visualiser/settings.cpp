@@ -1,30 +1,18 @@
 #include "Settings.h"
 #include <string>
 
-void Settings::setAlgo(std::string algorithm) {
+void Settings::setAlgo(std::string algorithm) {algorithmChosen = algorithm;}
 
-	algorithmChosen = algorithm;
-}
+void Settings::setSpeed(int speed) {executionSpeed = speed;}
 
-void Settings::setSpeed(int speed) {
+void Settings::setSize(int size) {arraySize = size;}
 
-	executionSpeed = speed;
-}
+void Settings::toggleAudio(bool enabled) {audioEnabled = enabled;}
 
-void Settings::toggleAudio(bool enabled) {
+std::string Settings::getAlgo() {return algorithmChosen;}
 
-	audioEnabled = enabled;
-}
+int Settings::getSpeed() {return executionSpeed;}
 
-std::string Settings::getAlgo() {
+int Settings::getSize() {return arraySize;}
 
-	return algorithmChosen;
-}
-
-int Settings::getSpeed() {
-	return executionSpeed;
-}
-
-bool Settings::getAudioEnabled() {
-	return audioEnabled;
-}
+bool Settings::getAudioEnabled() {return audioEnabled;}

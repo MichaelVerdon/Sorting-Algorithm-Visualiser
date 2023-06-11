@@ -158,7 +158,6 @@
     <ClCompile Include="App.cpp" />
     <ClCompile Include="MainFrame.cpp" />
     <ClCompile Include="Settings.cpp" />
-    <ClCompile Include="sort.cpp" />
     <ClCompile Include="testAlgos.cpp" />
   </ItemGroup>
   <ItemGroup>

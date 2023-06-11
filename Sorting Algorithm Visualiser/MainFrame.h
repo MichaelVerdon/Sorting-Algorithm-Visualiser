@@ -1,5 +1,7 @@
 #pragma once
 #include <wx/wx.h>
+#include "Settings.h"
+
 class MainFrame : public wxFrame
 {
 public:
@@ -7,6 +9,7 @@ public:
 	MainFrame(const wxString& title);
 private:
 
+	//Add Controls for array init size
 	void createGUI();
 	void bindEventHandlers();
 
@@ -18,9 +21,13 @@ private:
 
 	wxStaticText* algorithmText;
 	wxChoice* algoChoice;
+	wxArrayString sarr;
 
 	wxStaticText* speedText;
 	wxSlider* speedSlider;
+
+	wxStaticText* sizeText;
+	wxSlider* sizeSlider;
 
 	wxButton* startButton;
 	wxButton* pauseButton;
@@ -33,10 +40,11 @@ private:
 	void stopClicked(wxCommandEvent& evt);
 	void chooseAlgo(wxCommandEvent& evt);
 	void changeSpeed(wxCommandEvent& evt);
+	void changeSize(wxCommandEvent& evt);
 	void toggleAudio(wxCommandEvent& evt);
 
 	bool paused = false;
-	bool running = false;
+	bool running;
 
+	Settings settings;
 };
-
