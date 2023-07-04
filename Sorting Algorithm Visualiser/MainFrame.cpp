@@ -2,6 +2,9 @@
 #include <wx/wx.h>
 #include "Settings.h"
 #include <SDL.h>
+#include "SortingAlgorithm.h"
+#include "BubbleSort.h"
+#include <thread>
 
 MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY, title) {
 
@@ -54,8 +57,12 @@ void MainFrame::startClicked(wxCommandEvent& evt) {
 	
 	running = true;
 	startState();
-	wxLogStatus("Running");
-	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "Starting", "Worked", NULL);
+	std::thread sortThread([&]() {
+		BubbleSort BubbleSort(100);
+		});
+
+	sortThread.detach();
+	
 }
 
 void MainFrame::pauseClicked(wxCommandEvent& evt) {
@@ -68,24 +75,24 @@ void MainFrame::stopClicked(wxCommandEvent& evt) {
 	initState();
 }
 
-void MainFrame::chooseAlgo(wxCommandEvent& evt) {
+void inline MainFrame::chooseAlgo(wxCommandEvent& evt) {
 
 	int choiceIndex = algoChoice->GetSelection();
 	// Convert to std::string
 	settings.setAlgo(std::string(sarr[choiceIndex].mb_str()));
 }
 
-void MainFrame::changeSpeed(wxCommandEvent& evt) {
+void inline MainFrame::changeSpeed(wxCommandEvent& evt) {
 
 	settings.setSpeed(speedSlider->GetValue());
 }
 
-void MainFrame::changeSize(wxCommandEvent& evt) {
+void inline MainFrame::changeSize(wxCommandEvent& evt) {
 
 	settings.setSize(sizeSlider->GetValue());
 }
 
-void MainFrame::toggleAudio(wxCommandEvent& evt) {
+void inline MainFrame::toggleAudio(wxCommandEvent& evt) {
 
 	settings.toggleAudio(soundOption->GetValue());
 }

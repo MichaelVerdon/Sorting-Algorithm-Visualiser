@@ -156,14 +156,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="BubbleSort.cpp" />
     <ClCompile Include="MainFrame.cpp" />
     <ClCompile Include="Settings.cpp" />
-    <ClCompile Include="testAlgos.cpp" />
+    <ClCompile Include="SortingAlgorithm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
+    <ClInclude Include="BubbleSort.h" />
     <ClInclude Include="MainFrame.h" />
     <ClInclude Include="Settings.h" />
+    <ClInclude Include="SortingAlgorithm.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

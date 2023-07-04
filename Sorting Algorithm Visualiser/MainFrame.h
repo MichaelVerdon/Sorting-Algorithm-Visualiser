@@ -38,10 +38,10 @@ private:
 	void startClicked(wxCommandEvent& evt);
 	void pauseClicked(wxCommandEvent& evt);
 	void stopClicked(wxCommandEvent& evt);
-	void chooseAlgo(wxCommandEvent& evt);
-	void changeSpeed(wxCommandEvent& evt);
-	void changeSize(wxCommandEvent& evt);
-	void toggleAudio(wxCommandEvent& evt);
+	void inline chooseAlgo(wxCommandEvent& evt);
+	void inline changeSpeed(wxCommandEvent& evt);
+	void inline changeSize(wxCommandEvent& evt);
+	void inline toggleAudio(wxCommandEvent& evt);
 
 	bool paused = false;
 	bool running;
