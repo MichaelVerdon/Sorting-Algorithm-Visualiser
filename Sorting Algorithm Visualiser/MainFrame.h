@@ -47,4 +47,5 @@ private:
 	bool running;
 
 	Settings settings;
+
 };

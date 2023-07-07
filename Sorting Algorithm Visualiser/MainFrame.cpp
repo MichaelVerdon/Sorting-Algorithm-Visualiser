@@ -4,6 +4,8 @@
 #include <SDL.h>
 #include "SortingAlgorithm.h"
 #include "BubbleSort.h"
+#include "SelectionSort.h"
+#include "InsertionSort.h"
 #include <thread>
 
 MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY, title) {
@@ -58,8 +60,23 @@ void MainFrame::startClicked(wxCommandEvent& evt) {
 	running = true;
 	startState();
 	std::thread sortThread([&]() {
-		BubbleSort BubbleSort(100);
-		});
+		switch (algoChoice->GetSelection()) {
+		case 0: {
+			BubbleSort BubbleSort(100);
+			break;
+		}
+		case 1: {
+			SelectionSort SelectionSort(100);
+			break;
+		}
+		case 2: {
+			InsertionSort InsertionSort(100);
+			break;
+		}
+		default:
+			BubbleSort BubbleSort(100);
+		}
+	});
 
 	sortThread.detach();
 	

@@ -18,24 +18,16 @@ void BubbleSort::sort() {
 
     int i, j;
     bool swapped;
-    for (i = 0; i < array.size() - 1; i++) {
+    for (i = 0; i < arraySize - 1; i++) {
 
         swapped = false;
-        for (j = 0; j < array.size() - i - 1; j++) {
+        for (j = 0; j < arraySize - i - 1; j++) {
 
             if (array[j] > array[j + 1]) {
                 std::swap(array[j], array[j + 1]);
                 swapped = true;
             }
-            // Clear screen
-            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-            SDL_RenderClear(renderer);
-            // Draw sort state
-            drawState(array, renderer, i, j);
-            // Show to window
-            SDL_RenderPresent(renderer);
-            // Delay
-            SDL_Delay(1);
+            prepareDraw(i, j);
         }
 
         if (swapped == false)

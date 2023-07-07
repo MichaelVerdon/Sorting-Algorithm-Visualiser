@@ -7,6 +7,7 @@
 class SortingAlgorithm
 {
 public:
+	// Sorting algorithms extracted from geeksforgeeks.org
 
 	void initArray();
 	void drawState(
@@ -15,6 +16,7 @@ public:
 		unsigned int red, 
 		unsigned int blue);
 	void killWindow();
+	void prepareDraw(int red, int blue);
 
 	int arraySize;
 	std::vector<int> array;

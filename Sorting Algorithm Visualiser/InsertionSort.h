@@ -1,11 +1,11 @@
 #pragma once
 #include "SortingAlgorithm.h"
 
-class BubbleSort : SortingAlgorithm
+class InsertionSort : SortingAlgorithm
 {
 public:
 
-	BubbleSort(int size);
+	InsertionSort(int size);
 	void sort();
 };
 

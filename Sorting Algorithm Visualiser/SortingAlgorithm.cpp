@@ -46,3 +46,15 @@ void SortingAlgorithm::killWindow() {
 	// Quit SDL
 	SDL_Quit();
 }
+
+void SortingAlgorithm::prepareDraw(int red, int blue) {
+
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+	SDL_RenderClear(renderer);
+	// Draw sort state
+	drawState(array, renderer, red, blue);
+	// Show to window
+	SDL_RenderPresent(renderer);
+	// Delay
+	SDL_Delay(1);
+}
