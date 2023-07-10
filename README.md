@@ -1,4 +1,4 @@
 # Sorting-Algorithm-Visualiser
-Visualise many sorting algorithms coded from scratch
+Visualise many sorting algorithms.
 
-Code for sorting algorithms was taken from geeksforgeeks.org
+Code for sorting algorithms taken from geeksforgeeks.org which is also a great resource to learn about how these algorithms work.
