@@ -7,6 +7,7 @@
 #include "SelectionSort.h"
 #include "InsertionSort.h"
 #include <thread>
+#include "MergeSort.h"
 
 MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY, title) {
 
@@ -72,6 +73,9 @@ void MainFrame::startClicked(wxCommandEvent& evt) {
 		case 2: {
 			InsertionSort InsertionSort(100);
 			break;
+		}
+		case 3: {
+			MergeSort MergeSort(100);
 		}
 		default:
 			BubbleSort BubbleSort(100);
