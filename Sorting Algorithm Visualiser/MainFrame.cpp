@@ -8,6 +8,7 @@
 #include "InsertionSort.h"
 #include <thread>
 #include "MergeSort.h"
+#include "QuickSort.h"
 
 MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY, title) {
 
@@ -77,10 +78,11 @@ void MainFrame::startClicked(wxCommandEvent& evt) {
 		case 3: {
 			MergeSort MergeSort(100);
 		}
-		default:
-			BubbleSort BubbleSort(100);
+		case 4: {
+			QuickSort QuickSort(100);
 		}
-	});
+	}
+});
 
 	sortThread.detach();
 	
