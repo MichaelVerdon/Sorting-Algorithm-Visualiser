@@ -12,6 +12,8 @@ QuickSort::QuickSort(int size) {
     SDL_RenderSetScale(renderer, 10, 10);
 
     sort(0, arraySize-1);
+    SDL_Delay(100);
+    killWindow();
 }
 
 void QuickSort::sort(int start, int end) {

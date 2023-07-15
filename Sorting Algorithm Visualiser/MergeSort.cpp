@@ -16,6 +16,8 @@ MergeSort::MergeSort(int size) {
 
 void MergeSort::sort() {
     mergeSort(0, array.size() - 1);
+    SDL_Delay(100);
+    killWindow();
 }
 
 void MergeSort::merge(int const left, int const mid,

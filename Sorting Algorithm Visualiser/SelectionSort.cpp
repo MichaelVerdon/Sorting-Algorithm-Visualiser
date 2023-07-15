@@ -12,6 +12,8 @@ SelectionSort::SelectionSort(int size) {
     SDL_RenderSetScale(renderer, 10, 10);
 
     sort();
+    SDL_Delay(100);
+    killWindow();
 }
 
 void SelectionSort::sort() {

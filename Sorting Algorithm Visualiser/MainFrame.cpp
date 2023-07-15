@@ -9,6 +9,7 @@
 #include <thread>
 #include "MergeSort.h"
 #include "QuickSort.h"
+#include "HeapSort.h"
 
 MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY, title) {
 
@@ -80,6 +81,9 @@ void MainFrame::startClicked(wxCommandEvent& evt) {
 		}
 		case 4: {
 			QuickSort QuickSort(100);
+		}
+		case 5: {
+			HeapSort HeapSort(100);
 		}
 	}
 });
