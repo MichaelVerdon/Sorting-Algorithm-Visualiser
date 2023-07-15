@@ -4,7 +4,7 @@ class HeapSort : SortingAlgorithm
 {
 public:
 
-	HeapSort(int size);
+	HeapSort(int size, int animSpeed);
 	void sort();
 	void heapify( 
 		int heapSize,

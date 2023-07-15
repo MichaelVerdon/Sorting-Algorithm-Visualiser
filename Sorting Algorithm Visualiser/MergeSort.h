@@ -5,7 +5,7 @@ class MergeSort : SortingAlgorithm
 {
 public:
 
-	MergeSort(int size);
+	MergeSort(int size, int animSpeed);
 	void sort();
 	void merge(int const left, int const mid,
 		int const right);

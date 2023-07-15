@@ -2,11 +2,11 @@
 #include <wx/wx.h>
 #include "Settings.h"
 #include <SDL.h>
+#include <thread>
 #include "SortingAlgorithm.h"
 #include "BubbleSort.h"
 #include "SelectionSort.h"
 #include "InsertionSort.h"
-#include <thread>
 #include "MergeSort.h"
 #include "QuickSort.h"
 #include "HeapSort.h"
@@ -23,7 +23,6 @@ void MainFrame::createGUI() {
 
 	sarr.Add("Bubble Sort"); sarr.Add("Selection Sort"); sarr.Add("Insertion Sort");
 	sarr.Add("Merge Sort"); sarr.Add("Quick Sort"); sarr.Add("Heap Sort");
-	sarr.Add("Radix Sort");
 
 	algorithmText = new wxStaticText(panel, wxID_ANY, "Sorting Algorithm", wxPoint(90, 10), wxSize(-1, -1));
 	algoChoice = new wxChoice(panel, wxID_ANY, wxPoint(50, 30), wxSize(200, 100), sarr);
@@ -63,27 +62,28 @@ void MainFrame::startClicked(wxCommandEvent& evt) {
 	running = true;
 	startState();
 	std::thread sortThread([&]() {
+		int selectedSpeed = settings.getSpeed();
 		switch (algoChoice->GetSelection()) {
 		case 0: {
-			BubbleSort BubbleSort(100);
+			BubbleSort BubbleSort(100, selectedSpeed);
 			break;
 		}
 		case 1: {
-			SelectionSort SelectionSort(100);
+			SelectionSort SelectionSort(100, selectedSpeed);
 			break;
 		}
 		case 2: {
-			InsertionSort InsertionSort(100);
+			InsertionSort InsertionSort(100, selectedSpeed);
 			break;
 		}
 		case 3: {
-			MergeSort MergeSort(100);
+			MergeSort MergeSort(100, selectedSpeed);
 		}
 		case 4: {
-			QuickSort QuickSort(100);
+			QuickSort QuickSort(100, selectedSpeed);
 		}
 		case 5: {
-			HeapSort HeapSort(100);
+			HeapSort HeapSort(100, selectedSpeed);
 		}
 	}
 });

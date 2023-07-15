@@ -1,8 +1,9 @@
 #include "HeapSort.h"
 
-HeapSort::HeapSort(int size) {
+HeapSort::HeapSort(int size, int animSpeed) {
 
     arraySize = size;
+    speed = animSpeed;
     initArray();
 
     SDL_CreateWindowAndRenderer(

@@ -4,7 +4,7 @@ class SelectionSort : SortingAlgorithm
 {
 public:
 
-	SelectionSort(int size);
+	SelectionSort(int size, int animSpeed);
 	void sort();
 };
 

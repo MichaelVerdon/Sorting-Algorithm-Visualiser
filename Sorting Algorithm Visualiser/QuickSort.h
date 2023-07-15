@@ -4,7 +4,7 @@ class QuickSort : SortingAlgorithm
 {
 public:
 
-	QuickSort(int size);
+	QuickSort(int size, int animSpeed);
 	void sort(int start, int end);
 	int partition(int start, int end);
 };

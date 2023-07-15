@@ -1,8 +1,9 @@
 #include "QuickSort.h"
 
-QuickSort::QuickSort(int size) {
+QuickSort::QuickSort(int size, int animSpeed) {
 
     arraySize = size;
+    speed = animSpeed;
     initArray();
 
     SDL_CreateWindowAndRenderer(

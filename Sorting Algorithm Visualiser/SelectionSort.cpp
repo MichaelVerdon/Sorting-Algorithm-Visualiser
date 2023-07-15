@@ -1,8 +1,9 @@
 #include "SelectionSort.h"
 
-SelectionSort::SelectionSort(int size) {
+SelectionSort::SelectionSort(int size, int animSpeed) {
 
 	arraySize = size;
+    speed = animSpeed;
     initArray();
 
     SDL_CreateWindowAndRenderer(

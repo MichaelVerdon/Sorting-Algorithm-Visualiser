@@ -5,7 +5,7 @@ class InsertionSort : SortingAlgorithm
 {
 public:
 
-	InsertionSort(int size);
+	InsertionSort(int size, int animSpeed);
 	void sort();
 };
 

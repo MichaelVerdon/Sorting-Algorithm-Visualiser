@@ -19,6 +19,7 @@ public:
 	void prepareDraw(int red, int blue);
 
 	int arraySize;
+	int speed;
 	std::vector<int> array;
 	std::string algoChoice;
 

@@ -1,8 +1,9 @@
 #include "InsertionSort.h"
 
-InsertionSort::InsertionSort(int size) {
+InsertionSort::InsertionSort(int size, int animSpeed) {
 
     arraySize = size;
+    speed = animSpeed;
     initArray();
 
     SDL_CreateWindowAndRenderer(

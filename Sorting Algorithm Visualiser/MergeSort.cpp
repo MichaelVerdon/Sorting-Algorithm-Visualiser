@@ -1,8 +1,9 @@
 #include "MergeSort.h"
 
-MergeSort::MergeSort(int size) {
+MergeSort::MergeSort(int size, int animSpeed) {
 
     arraySize = size;
+    speed = animSpeed;
     initArray();
 
     SDL_CreateWindowAndRenderer(

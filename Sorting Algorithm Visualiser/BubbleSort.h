@@ -5,7 +5,7 @@ class BubbleSort : SortingAlgorithm
 {
 public:
 
-	BubbleSort(int size);
+	BubbleSort(int size, int animSpeed);
 	void sort();
 };
 
