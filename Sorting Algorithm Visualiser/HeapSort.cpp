@@ -7,7 +7,7 @@ HeapSort::HeapSort(int size, int animSpeed) {
     initArray();
 
     SDL_CreateWindowAndRenderer(
-        size * 20, size * 10, 0,
+        size * 20, 100 * 10, 0,
         &window, &renderer
     );
     SDL_RenderSetScale(renderer, 10, 10);

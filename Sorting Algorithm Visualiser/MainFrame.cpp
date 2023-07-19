@@ -32,7 +32,7 @@ void MainFrame::createGUI() {
 	speedSlider = new wxSlider(panel, wxID_ANY, 100, 10, 100, wxPoint(50, 70), wxSize(200, 100), wxSL_VALUE_LABEL);
 
 	sizeText = new wxStaticText(panel, wxID_ANY, "Array Size", wxPoint(120, 180), wxSize(-1, -1));
-	sizeSlider = new wxSlider(panel, wxID_ANY, 200, 50, 200, wxPoint(50, 140), wxSize(200, 100), wxSL_VALUE_LABEL);
+	sizeSlider = new wxSlider(panel, wxID_ANY, 100, 10, 100, wxPoint(50, 140), wxSize(200, 100), wxSL_VALUE_LABEL);
 
 	soundOption = new wxCheckBox(panel, wxID_ANY, "Audio", wxPoint(120, 210), wxSize(-1, -1));
 
@@ -65,25 +65,28 @@ void MainFrame::startClicked(wxCommandEvent& evt) {
 		int selectedSpeed = settings.getSpeed();
 		switch (algoChoice->GetSelection()) {
 		case 0: {
-			BubbleSort BubbleSort(100, selectedSpeed);
+			BubbleSort BubbleSort(sizeSlider->GetValue(), selectedSpeed);
 			break;
 		}
 		case 1: {
-			SelectionSort SelectionSort(100, selectedSpeed);
+			SelectionSort SelectionSort(sizeSlider->GetValue(), selectedSpeed);
 			break;
 		}
 		case 2: {
-			InsertionSort InsertionSort(100, selectedSpeed);
+			InsertionSort InsertionSort(sizeSlider->GetValue(), selectedSpeed);
 			break;
 		}
 		case 3: {
-			MergeSort MergeSort(100, selectedSpeed);
+			MergeSort MergeSort(sizeSlider->GetValue(), selectedSpeed);
+			break;
 		}
 		case 4: {
-			QuickSort QuickSort(100, selectedSpeed);
+			QuickSort QuickSort(sizeSlider->GetValue(), selectedSpeed);
+			break;
 		}
 		case 5: {
-			HeapSort HeapSort(100, selectedSpeed);
+			HeapSort HeapSort(sizeSlider->GetValue(), selectedSpeed);
+			break;
 		}
 	}
 });

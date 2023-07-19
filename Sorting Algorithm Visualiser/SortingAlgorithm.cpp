@@ -56,5 +56,5 @@ void SortingAlgorithm::prepareDraw(int red, int blue) {
 	// Show to window
 	SDL_RenderPresent(renderer);
 	// Delay
-	SDL_Delay(speed*0.1);
+	SDL_Delay(pow(speed*0.1, -1) * 100);
 }
