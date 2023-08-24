@@ -13,6 +13,7 @@ void SortingAlgorithm::initArray() {
 }
 
 void SortingAlgorithm::drawState(
+
 	std::vector<int>& vector, 
 	SDL_Renderer* renderer, 
 	unsigned int red, 
@@ -56,5 +57,5 @@ void SortingAlgorithm::prepareDraw(int red, int blue) {
 	// Show to window
 	SDL_RenderPresent(renderer);
 	// Delay
-	SDL_Delay(pow(speed*0.1, -1) * 100);
+	SDL_Delay(pow(speed*0.2, -1) * 100);
 }

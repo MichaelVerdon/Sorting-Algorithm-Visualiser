@@ -37,8 +37,6 @@ void MainFrame::createGUI() {
 	soundOption = new wxCheckBox(panel, wxID_ANY, "Audio", wxPoint(120, 210), wxSize(-1, -1));
 
 	startButton = new wxButton(panel, wxID_ANY, "Start", wxPoint(350, 50), wxSize(100, -1));
-	pauseButton = new wxButton(panel, wxID_ANY, "Pause", wxPoint(350, 80), wxSize(100, -1));
-	stopButton = new wxButton(panel, wxID_ANY, "Stop", wxPoint(350, 110), wxSize(100, -1));
 
 	CreateStatusBar();
 
@@ -48,8 +46,6 @@ void MainFrame::createGUI() {
 void MainFrame::bindEventHandlers() {
 
 	startButton->Bind(wxEVT_BUTTON, &MainFrame::startClicked, this);
-	pauseButton->Bind(wxEVT_BUTTON, &MainFrame::pauseClicked, this);
-	stopButton->Bind(wxEVT_BUTTON, &MainFrame::stopClicked, this);
 
 	algoChoice->Bind(wxEVT_CHOICE, &MainFrame::chooseAlgo, this);
 	speedSlider->Bind(wxEVT_SLIDER, &MainFrame::changeSpeed, this);
@@ -92,18 +88,9 @@ void MainFrame::startClicked(wxCommandEvent& evt) {
 });
 
 	sortThread.detach();
-	
-}
-
-void MainFrame::pauseClicked(wxCommandEvent& evt) {
-
-	pauseState();
-}
-
-void MainFrame::stopClicked(wxCommandEvent& evt) {
-
 	initState();
 }
+
 
 void inline MainFrame::chooseAlgo(wxCommandEvent& evt) {
 
@@ -136,9 +123,6 @@ void MainFrame::initState() {
 	sizeSlider->Enable();
 	soundOption->Enable();
 	startButton->Enable();
-	pauseButton->Disable();
-	pauseButton->SetLabel("Pause");
-	stopButton->Disable();
 	wxLogStatus("Not Running");
 }
 
@@ -151,22 +135,4 @@ void MainFrame::startState() {
 	sizeSlider->Disable();
 	soundOption->Disable();
 	startButton->Disable();
-	pauseButton->Enable();
-	stopButton->Enable();
-}
-
-void MainFrame::pauseState() {
-
-	paused = !paused;
-
-	if (paused && running) {
-
-		pauseButton->SetLabel("Resume");
-		wxLogStatus("Paused");
-	}
-	else if (running) {
-
-		pauseButton->SetLabel("Pause");
-		wxLogStatus("Running");
-	}
 }

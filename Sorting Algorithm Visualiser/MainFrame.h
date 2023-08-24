@@ -15,7 +15,6 @@ private:
 
 	void initState();
 	void startState();
-	void pauseState();
 
 	wxPanel* panel;
 
@@ -30,14 +29,10 @@ private:
 	wxSlider* sizeSlider;
 
 	wxButton* startButton;
-	wxButton* pauseButton;
-	wxButton* stopButton;
 
 	wxCheckBox* soundOption;
 
 	void startClicked(wxCommandEvent& evt);
-	void pauseClicked(wxCommandEvent& evt);
-	void stopClicked(wxCommandEvent& evt);
 	void inline chooseAlgo(wxCommandEvent& evt);
 	void inline changeSpeed(wxCommandEvent& evt);
 	void inline changeSize(wxCommandEvent& evt);
